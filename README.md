@@ -6,4 +6,5 @@
 - Livewire.
 - Tailwind css.
 
-https://github.com/JDanielOrdonez/Lista-de-tareas/blob/main/screenshots/todolist.png?raw=true
+<img src="screenshots/todolist.png" />
+screenshots/todolist.png
