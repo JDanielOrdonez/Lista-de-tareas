@@ -7,4 +7,3 @@
 - Tailwind css.
 
 <img src="screenshots/todolist.png" />
-screenshots/todolist.png
