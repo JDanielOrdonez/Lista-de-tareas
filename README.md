@@ -1,4 +1,4 @@
-<p align="center">## Lista de tareas</p>
+## Lista de tareas
 
 ## Herramientas
 
