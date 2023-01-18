@@ -15,7 +15,7 @@ class CrearTarea extends Component
 
     public function crearTarea()
     {
-        // Validar 
+        // Validar.
         $datos = $this->validate();
         
         // Guardar tarea a la bd
