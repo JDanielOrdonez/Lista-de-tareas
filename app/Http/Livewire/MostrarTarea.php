@@ -8,10 +8,9 @@ use Livewire\Component;
 class MostrarTarea extends Component
 {
 
-    public $tarea = [];       
-    public $color = 'bg-white'; 
-    public $textTarea;     
-    
+    public $tarea = [];      
+    // public $textTarea;         
+    // public $ho;
 
     protected $listeners = [
         'eliminarTarea',
@@ -28,20 +27,20 @@ class MostrarTarea extends Component
     public function eliminarTarea(Tarea $tarea)
     {
         $tarea->delete();
-    }
-    public function editarTarea()
-    {        
-    }
+    }    
     
     public function render()
-    {                
+    {      
+        //agregae mas consultas aqui, guardar el texto, id y fecha en variables public diferentes  
         $tareas = Tarea::when($this->tarea, function($query){
             $query->where('user_id', auth()->user()->id);
-        })->paginate(21);       
+        })->paginate(21);
+
+        // dd($tareas[0]->tarea);
+        // $this->ho = $tareas[0]->tarea;
         
         return view('livewire.mostrar-tarea', [
             'tareas' => $tareas,
-            'color' => $this->color
         ]);
     }
 }
