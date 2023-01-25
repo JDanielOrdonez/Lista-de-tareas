@@ -8,13 +8,13 @@ use Livewire\Component;
 class MostrarTarea extends Component
 {
 
-    public $tarea = [];      
-    // public $textTarea;         
+    public $tarea = [];   
+    // public $textTarea = [];          
+    public $vacante_id = 60;
     // public $ho;
 
     protected $listeners = [
         'eliminarTarea',
-        'editarTarea',
         'tareaCreada' => 'agregarTarea'
     ];
 
@@ -24,6 +24,20 @@ class MostrarTarea extends Component
         $this->tarea[] = $tarea;
     }
     
+    public function editarTarea()
+    {
+        // $text = $this->textTarea[$this->index];
+        // dd($this->textTarea[0]);
+
+
+        // $tarea = Tarea::find($this->vacante_id);
+        // $tarea->tarea = $this->textTarea.'9';
+
+        // $tarea->save();
+    
+        dd('a');
+    }
+
     public function eliminarTarea(Tarea $tarea)
     {
         $tarea->delete();
@@ -32,13 +46,18 @@ class MostrarTarea extends Component
     public function render()
     {      
         //agregae mas consultas aqui, guardar el texto, id y fecha en variables public diferentes  
+        // $tareas = Tarea::when($this->tarea, function($query){
+        //     $query->where('user_id', auth()->user()->id);
+        // })->paginate(21);
+
         $tareas = Tarea::when($this->tarea, function($query){
             $query->where('user_id', auth()->user()->id);
         })->paginate(21);
 
-        // dd($tareas[0]->tarea);
-        // $this->ho = $tareas[0]->tarea;
+        $this->textTarea = $tareas->pluck('tarea')->toArray();
+        // dd($this->textTarea);
         
+
         return view('livewire.mostrar-tarea', [
             'tareas' => $tareas,
         ]);
